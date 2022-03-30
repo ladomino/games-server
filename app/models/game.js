@@ -24,12 +24,15 @@ const gameSchema = new mongoose.Schema(
 		},
 		educational: {
 			type: Boolean,
+			required: true,
 		},
 		puzzle: {
 			type: Boolean,
+			required: true,
 		},
 		family: {
 			type: Boolean,
+			required: true,
 		},
 	},
 	{
