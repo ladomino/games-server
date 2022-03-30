@@ -16,7 +16,7 @@ const requestLogger = require('./lib/request_logger')
 const db = require('./config/db')
 
 // require configured passport authentication middleware
-const auth = require('./lib/auth')
+// const auth = require('./lib/auth')
 
 // define server and client ports
 // used for cors and local port declaration
