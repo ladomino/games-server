@@ -5,6 +5,7 @@ const cors = require('cors')
 
 // require route files
 const gameRoutes = require('./app/routes/game_routes')
+const userRoutes = require('./app/routes/user_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -16,7 +17,7 @@ const requestLogger = require('./lib/request_logger')
 const db = require('./config/db')
 
 // require configured passport authentication middleware
-// const auth = require('./lib/auth')
+const auth = require('./lib/auth')
 
 // define server and client ports
 // used for cors and local port declaration
@@ -48,10 +49,10 @@ const port = process.env.PORT || serverDevPort
 // this middleware makes it so the client can use the Rails convention
 // of `Authorization: Token token=<token>` OR the Express convention of
 // `Authorization: Bearer <token>`
-// app.use(replaceToken)
+app.use(replaceToken)
 
 // register passport authentication middleware
-// app.use(auth)
+app.use(auth)
 
 // add `express.json` middleware which will parse JSON requests into
 // JS objects before they reach the route files.
@@ -64,6 +65,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(requestLogger)
 
 // register route files
+app.use(userRoutes)
 app.use(gameRoutes)
 
 // register error handling middleware

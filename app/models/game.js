@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 
-const gameSchema = new mongoose.Schema(
+const {Schema, model} = mongoose
+
+const gameSchema = new Schema(
 	{
 		name: {
 			type: String,
@@ -32,6 +34,11 @@ const gameSchema = new mongoose.Schema(
 		},
 		family: {
 			type: Boolean,
+			required: true,
+		},
+		owner: {
+			type: Schema.Types.ObjectId,
+			ref: 'User',
 			required: true,
 		},
 	},
